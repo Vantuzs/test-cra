@@ -20,7 +20,7 @@ class Aloha extends React.Component {
     render(){
         const isGreets = this.state.isGreet? 'Hello': 'Bye';
         // console.log(this.props);
-        return <h1 onClick={()=>{this.clickHandler()}}>{isGreets} {this.props.name}</h1>
+        return <h1 onClick={()=>{this.clickHandler()}}>{isGreets} {this.props.firstName} {this.props.lastName}</h1>
     
     }
 }
