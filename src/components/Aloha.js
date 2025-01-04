@@ -1,6 +1,6 @@
 import React from "react";
 
-class Greeting extends React.Component {
+class Aloha extends React.Component {
     constructor(props){
         super(props)
 
@@ -18,14 +18,14 @@ class Greeting extends React.Component {
     }
 
     render(){
-        const isGreets = this.state.isGreet? 'Hello': 'Buy';
+        const isGreets = this.state.isGreet? 'Hello': 'Bye';
         // console.log(this.props);
         return <h1 onClick={()=>{this.clickHandler()}}>{isGreets} {this.props.name}</h1>
     
     }
 }
 
-export default Greeting;
+export default Aloha;
 
 
 /* 
