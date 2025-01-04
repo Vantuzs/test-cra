@@ -10,22 +10,27 @@ class AlohaDashboard extends React.Component{
         this.state = {
             usersArray: [
                 {
+                    id: 1,
                     firstName: 'Tony',
                     lastName: 'Stark'
                 },
                 {
+                    id: 2,
                     firstName: 'Bruce',
                     lastName: 'Brenner'
                 },
                 {
+                    id: 3,
                     firstName: 'Thor',
                     lastName: 'Odinson'
                 },
                 {
+                    id: 4,
                     firstName: 'Peter',
                     lastName: 'Parker'
                 },
                 {
+                    id: 5,
                     firstName: 'Natasha',
                     lastName: 'Romanow'
                 }
@@ -35,7 +40,7 @@ class AlohaDashboard extends React.Component{
 
     userToALoha(){
         const {usersArray} = this.state;
-        return usersArray.map((user)=><Aloha firstName={user.firstName} lastName={user.lastName}/>)
+        return usersArray.map((user)=><Aloha key={user.id} firstName={user.firstName} lastName={user.lastName}/>)
     }
 
     sortUsers(){
