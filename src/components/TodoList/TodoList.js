@@ -15,7 +15,19 @@ constructor(props){
 
 renderLi(){
     const {todoList} = this.state;
-    return todoList.map((task) => <li key={task.id}>{task.text}</li>);
+    return todoList.map((task) => <li key={task.id}>
+        {task.text}
+        <button onClick={()=>{this.removeTask(task.id)}}>XxX</button>
+    </li>);
+}
+
+removeTask(taskIDtoRemove){
+    const {todoList} = this.state;
+    const filtredArray = todoList.filter((task,index,arr) => task.id !== taskIDtoRemove);
+
+    this.setState({
+        todoList: filtredArray
+    });
 }
 
 render(){
