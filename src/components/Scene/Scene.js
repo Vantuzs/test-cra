@@ -23,7 +23,7 @@ class Scene extends React.Component {
 
         return (
             <div className={isLight ? "scene-on": "scene-off"}>
-                <Toggler changeParentState={() => {this.toggleScene()}} />
+                <Toggler changeParentState={() => {this.toggleScene()}} buttonText={isLight ? 'Off':'On'} />
             </div>
         )
     }
