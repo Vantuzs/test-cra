@@ -12,3 +12,17 @@
     background-color: grey;
 }
 
+.divas{
+    width: 200px;
+    height: 200px;
+    border: 2px solid pink;
+    background-color: rgb(31, 155, 0);
+}
+
+.divasMin{
+    width: 200px;
+    height: 200px;
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+}
