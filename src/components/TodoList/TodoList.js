@@ -25,7 +25,6 @@ renderLi(){
     <TodoItem 
     key={task.id} 
     text={task.text} 
-    // id={task.id} 
     delCallback={() => {this.removeTask(task.id)}}
     />);
 }
