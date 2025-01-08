@@ -25,6 +25,8 @@ class Scene extends React.Component {
         })
     }
 
+    
+
 
     render(){
         const {isLight,divasTxt} = this.state
