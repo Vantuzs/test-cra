@@ -1,5 +1,7 @@
 import React from "react";
 import { getUsers } from "../../api";
+import UserCard from "./UserCard";
+import "./style.css"
 
 class UserList extends React.Component{
     constructor(props){
@@ -23,9 +25,9 @@ class UserList extends React.Component{
     render(){
         return (
             <>
-            <ul>
-                
-            </ul>
+            <section className="secticia">
+                <UserCard userCard={this.state.users}></UserCard>
+            </section>
             </>
         )
     }

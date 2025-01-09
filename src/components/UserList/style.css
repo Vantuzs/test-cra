@@ -1,0 +1,34 @@
+.imgishka{
+    border-radius: 50%;
+    text-shadow: 10px 10px black;
+}
+
+.divas{
+    border: 2px solid lime;
+    padding: 10px;
+    width: 200px;
+    height: 250px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    margin: 5px;
+
+}
+
+.divas-line{
+    width: 150px;
+    /* height: px; */
+    color: black;
+    border: 1px solid black;
+    position:absolute;
+    top: 200px;
+}
+
+.secticia{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
