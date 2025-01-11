@@ -16,7 +16,7 @@ function UserCard(props){
     const {userCard} = props
     // const [obj] = userCard
     // const {email,name:{first,last},picture:{large}} = obj
-    console.log(obj);  
+    // console.log(obj);  
     
     // const {picture,email,name:{first,last}}=obj
     return userCard.map(data=> UserCardCreate(data))
