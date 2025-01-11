@@ -1,0 +1,29 @@
+.form-wrapper{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.inputici{
+    margin: 5px 0px;
+    width: 192.45px;
+}
+
+.btnSend{
+    /* width: 185px; */
+}
+
+.invalid{
+    border: 2px solid red;
+    margin: 5px 0px;
+    width: 192.45px;
+}
+
+.valid{
+    border: 2px solid green;
+    margin: 5px 0px;
+    width: 192.45px;
+}
