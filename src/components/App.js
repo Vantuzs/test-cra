@@ -1,13 +1,21 @@
 import React from "react";
-import SignInForm from "./SignInForm/SignInForm";
-import Hello from "./Hello/Hello";
-import HelloParent from "./HelloForm/HelloParent";
+import UserList from "./UserList/UserList";
 
 function App(props){
     return (
-    <HelloParent/>
+    <UserList/>
     )
     
 }
 
 export default App;
+
+/* 
+
+Получаем список пользователей с БД (randomuser.me) 
+Сделать инпутик с помощью которому можно будет фильтровать пользователей за Фамилией
+
+Дополнительное задание.
+Сделать еще один инпут с кнопкой, где вы можете указать, какое количество пользователей вы должны подгрузить
+
+*/
