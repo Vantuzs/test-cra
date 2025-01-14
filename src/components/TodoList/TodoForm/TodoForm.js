@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./TodoFormStyle.module.css"
+import cx from 'classnames'
 
 // "*" - Запрещенный символ, нужно реализовать вилидацию 
 
@@ -59,17 +60,17 @@ class TodoForm extends React.Component{
 
 export default TodoForm;
 
-function cx(objectClassNames){
-    // const cort = Object.entries(objectClassNames);
-    // const filtredArray = cort.filter(([className,condition])=>condition);
-    // const mapArray = filtredArray.map(([className,condition]) => className);
-    // return mapArray.join(' ')
+// function cx(objectClassNames){
+//     // const cort = Object.entries(objectClassNames);
+//     // const filtredArray = cort.filter(([className,condition])=>condition);
+//     // const mapArray = filtredArray.map(([className,condition]) => className);
+//     // return mapArray.join(' ')
 
-    return Object.entries(objectClassNames)
-    .filter(([className,condition])=>condition)
-    .map(([className,condition]) => className)
-    .join(' ')
-}
+//     return Object.entries(objectClassNames)
+//     .filter(([className,condition])=>condition)
+//     .map(([className,condition]) => className)
+//     .join(' ')
+// }
 
 /*
 
