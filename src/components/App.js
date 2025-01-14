@@ -1,21 +1,14 @@
 import React from "react";
 import UserList from "./UserList/UserList";
+import TodoList from "./TodoList/TodoList";
 
 function App(props){
     return (
-    <UserList/>
+    <TodoList/>
     )
     
 }
 
 export default App;
 
-/* 
-
-Получаем список пользователей с БД (randomuser.me) 
-Сделать инпутик с помощью которому можно будет фильтровать пользователей за Фамилией
-
-Дополнительное задание.
-Сделать еще один инпут с кнопкой, где вы можете указать, какое количество пользователей вы должны подгрузить
-
-*/
+// name.module.css

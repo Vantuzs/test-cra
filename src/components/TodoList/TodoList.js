@@ -1,5 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
+import TodoForm from "./TodoForm/TodoForm";
+import styles from './TodoListStyle.module.css';
 
 class TodoList extends React.Component{
 constructor(props){
@@ -9,9 +11,27 @@ constructor(props){
         todoList: [
             {id: 1,text: 'go to party'},
             {id: 2,text: 'meet friends'},
-            {id: 3,text: 'have a walk'}
+            {id: 3,text: 'have a walk'},
+            {id: 4,text: 'have a dinsssk'},
         ]
     }
+}
+
+addTaskFunc= (value) =>{
+    if(value === ''){
+        return;
+    }
+
+    
+    const {todoList} = this.state
+    const newArr = [...todoList,{
+        id: todoList.length+1,
+        text: value
+    }]
+
+    this.setState({
+        todoList: newArr
+    })
 }
 
 renderLi(){
@@ -42,8 +62,8 @@ render(){
     return (
         <>
         <h1>TODOLIST</h1>
-
-        <ul>
+        <TodoForm addTask={this.addTaskFunc}/>
+        <ul className={styles.container}>
             {this.renderLi()}
         </ul>
         </>
@@ -52,3 +72,18 @@ render(){
 }
 
 export default TodoList;
+
+
+/* 
+
+TodoList - компонента в которой происходит управление списком задача и рендерится сам список задач
+
+Задача:
+Сделать компоненту TodoForm, которая будет представлять собой форму 
+Там будет 1 инпут - текст таски 
+И кнопка которая будет добовлять таску к списку в отцовской компоненте TodoList
+
+TodoList - отцовтская компонента 
+TodoForm - ребенок компонента
+
+*/
