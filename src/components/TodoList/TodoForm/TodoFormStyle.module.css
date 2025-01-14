@@ -2,3 +2,16 @@
     background-color: blueviolet;
     border: 4px dashed indigo;
 }
+
+.invalid-inpute{
+    border: 2px solid red;
+    background-color: saddlebrown;
+    color: teal;
+}
+
+.input {
+    height: 20px;
+    background-color: hotpink;
+    border: 3px solid khaki;
+    border-radius: 5px;
+}
