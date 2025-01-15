@@ -7,19 +7,31 @@
 В комоненте UserList продумать возможность отрисовывания карточек для многих юзеров
 */
 
-
+import React from "react";
 import "./style.css"
+import PropTypes from 'prop-types';
 import { UserCardCreate } from "./UserCardCreate";
 
-function UserCard(props){
-    console.log(props);
-    const {userCard} = props
+class UserCard extends React.Component{
+    constructor(props){
+        super(props)
+
+        this.state = {
+
+        }
+    }
+
     // const [obj] = userCard
     // const {email,name:{first,last},picture:{large}} = obj
     // console.log(obj);  
     
     // const {picture,email,name:{first,last}}=obj
-    return userCard.map(data=> UserCardCreate(data))
+    render(){
+        console.log(props);
+        const {userCard} = props
+
+        return userCard.map(data=> UserCardCreate(data))
+    }
     //     <div className="divas">
     //         <img src={large} className="imgishka"></img>
     //         <h3>{`${first} ${last}`}</h3>
@@ -29,5 +41,7 @@ function UserCard(props){
     //  </div>
     
 }
+
+
 
 export default UserCard;
