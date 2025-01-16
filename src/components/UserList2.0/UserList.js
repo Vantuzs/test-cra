@@ -12,30 +12,24 @@ class UserList2 extends React.Component {
             filteredUsers: [],
             userCount: 100,
             isLoading: true,
-            isError: false
+            isError: false,
+            page: 1
         }
     }
 
+    componentDidUpdate(prevProps,prevState){
+        const {page} = this.state
+        if(prevState.page !== page){ // Если у нас изменился номер страници
+            this.loadPage(page)
+
+        } 
+            
+    }
+
     componentDidMount() {
-        const { userCount } = this.state;
+        const { page } = this.state;
 
-        getUsers(userCount).then(data => {
-            const { results } = data;
-
-            this.setState({
-                users: results
-            });
-        })
-        .catch((error)=>{
-            this.setState({
-                isError: error
-            });
-        })
-        .finally(()=>{
-            this.setState({
-                isLoading: false
-            })
-        })
+        this.loadPage(page)
     }
 
     renderUsers = () => {
@@ -93,10 +87,10 @@ class UserList2 extends React.Component {
         });
     }
 
-    handleLoadUsersClick = () => {
+    handleLoadUsersClick = (page) => {
         const { userCount } = this.state;
 
-        getUsers(userCount).then(data => {
+        getUsers(userCount,page).then(data => {
             const { results } = data;
 
             const tempArray = this.state.users;
@@ -107,8 +101,59 @@ class UserList2 extends React.Component {
             this.setState({
                 users: tempArray
             })
+        })
+         .catch((error) => {
+            this.setState({
+                isError: error
+            });
+        })
+        .finally(() => {
+            this.setState({
+                isLoading: false
+            });
         });
     }
+
+    loadPage= (page)=>{
+        const { userCount } = this.state;
+
+        getUsers(userCount,page).then(data => {
+            const { results } = data;
+            
+
+            this.setState({
+                users: results
+            })
+        })
+         .catch((error) => {
+            this.setState({
+                isError: error
+            });
+        })
+        .finally(() => {
+            this.setState({
+                isLoading: false
+            });
+        });
+    }
+
+    prevBtnHandler = ()=> {
+        const {page} = this.state
+        if(page > 1){
+            this.setState({
+                page: page-1
+            })
+        }
+        
+    }
+
+    nextBtnHandler = ()=> {
+        const {page} = this.state
+        this.setState({
+            page: page+1
+        })
+    }
+
 
     render() {
         const { users, isLoading,isError } = this.state;
@@ -128,6 +173,9 @@ class UserList2 extends React.Component {
 
                 {isLoading && <ClimbingBoxLoader color="#5666f3" size={25} cssOverride={{display: "block", margin: "0 auto",}}/>}
                 {isError && <h1>Error happend 0o0 ===  {isError.message}</h1>}
+
+                <button onClick={this.prevBtnHandler}>Previous page</button>
+                <button onClick={this.nextBtnHandler}>Next page</button>
 
                 <section className="card-container">{users.length ? this.renderUsers() : null}</section>
             </>
