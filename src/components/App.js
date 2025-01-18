@@ -36,6 +36,13 @@ function App(props){
          
             toast.success('🛎️ 🔑 🪒🧼 Text copieted')
          }}>Click to copy text</button>
+
+         <button onClick={()=>{
+            const text = window.navigator.clipboard.readText()
+            .then((text)=>{
+                console.log(text);
+            });
+         }}>Read text from bufer</button>
         </>
     )
     
