@@ -43,6 +43,11 @@ function App(props){
                 console.log(text);
             });
          }}>Read text from bufer</button>
+
+
+         <button onClick={window.navigator.geolocation.getCurrentPosition((position)=>{
+            console.log(position);
+         })}>Get my current position</button>
         </>
     )
     
