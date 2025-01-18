@@ -7,7 +7,10 @@ import UserList2 from "./UserList2.0/UserList";
 
 function App(props){
     return (
-    <UserList2/>
+        <>
+    <button onClick={()=>{ window.close()}}>Close page</button>
+    <button onClick={()=>{ window.open("https://githugb.com")}}>Open Git</button>
+        </>
     )
     
 }
