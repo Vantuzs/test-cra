@@ -1,0 +1,22 @@
+[
+    {
+        "brand": "LG",
+        "model": "1",
+        "prise": "1000$"
+        },
+        {
+        "brand": "Samsung",
+        "model": "2",
+        "prise": "1300$"
+        },
+        {
+        "brand": "Samsung",
+        "model": "3",
+        "prise": "900$$"
+        },
+        {
+        "brand": "Dell",
+        "model": "Super-model",
+        "prise": "2000$"
+        }
+]
