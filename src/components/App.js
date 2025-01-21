@@ -1,62 +1,33 @@
-import React from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
-import PhonesLoader from "./PhonesLoader/PhonesLoader";
-import TVLoader from "./TVLoader/TVLoader";
-import DataProvider from "./DataProvider/DataProvider";
-import DataTv from "./DataTv/DataTv";
 
-function App(props){
-    return (
-        <>
-        <DataProvider 
-        loadData={()=>{
-            return fetch('./phones.json')
-            .then(response=>response.json())
-        }} 
-        >
-            {(state)=>{
-            const {data,isLoading,isError} = state
+import React, { Component } from 'react';
+import Tree from './Tree/Tree';
+import { UserContext } from '../contexts/userContext';
 
-            return (
-            <>
-                {isLoading && <div>Loading... 🐷</div>}  
-                {isError && <div>Eroor happening 🦧 : {isError.message}</div>} 
+class App extends Component {
+    constructor(props){
+        super(props)
 
-                <ul>
-                    {data.map((data,index)=><li key={index}>Brand: {data.brand} --- Model: {data.model} --- Prise: {data.prise}</li>)}
-                </ul>
-            </>
-            );
-        }}
-            </DataProvider>
-            <DataProvider 
-        loadData={()=>{
-            return fetch('./tv.json')
-            .then(response=>response.json())
-        }} 
-        >
-            {(state)=>{
-            const {data,isLoading,isError} = state
-
-            return (
-            <>
-                {isLoading && <div>Loading... 🐷</div>}  
-                {isError && <div>Eroor happening 🦧 : {isError.message}</div>} 
-
-                <ol>
-                    {data.map((data,index)=><li key={index}>Brand: {data.brand} --- Model: {data.model} --- Prise: {data.prise}</li>)}
-                </ol>
-            </>
-            );
-        }}
-            </DataProvider>
-        </>
-    )
-    
+        this.state = {
+            user: {
+                firstName: 'John',
+                lastName: 'Doe',
+                email: 'johndoe@gmail.com',
+                avatar: 'https://www.rodyna.in.ua/wp-content/uploads/2018/12/%D0%93%D0%BE%D1%80%D0%B8%D0%BB%D0%B0_7.jpg'
+            }
+        }
+    }
+    render() {
+        // console.log(userContext);
+        return (
+            <UserContext.Provider value={this.state.user}>
+            <Tree />
+            </UserContext.Provider>
+        );
+    }
 }
 
 export default App;
+
 
 /* 
 
