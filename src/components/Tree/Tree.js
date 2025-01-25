@@ -21,17 +21,6 @@ const Tree = (props) => {
     )
 }
 
-// const TreeWithTheme = (props)=>{
-//     return (
-//         <ThemeContext.Consumer>
-//             {({theme,setTheme})=>{
-//                 return <Tree theme={theme} setTheme={setTheme}/>
-//             }}
-//         </ThemeContext.Consumer>
-//     )
-// }
-
-
 
 const TreeWithTheme = withTheme(Tree)
 
