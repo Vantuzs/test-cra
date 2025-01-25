@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import Tree from './Tree/Tree';
+import TreeWithTheme from './Tree/Tree';
 import { UserContext } from '../contexts/userContext';
 import { ThemeContext } from '../contexts/themeContext';
 import CONSTANTS from '../constants';
@@ -44,9 +44,9 @@ class App extends Component {
                 <UserContext.Provider value={{
                 user: this.state.user,
                 logOut: this.logOut
-            }}>
+            }}> 
             App
-            <Tree />
+            <TreeWithTheme />
             </UserContext.Provider>
             </ThemeContext.Provider>
         );
@@ -84,4 +84,10 @@ loadData={()=>{
         }}
 */
 
+
+/* 
+
+Компонент высшего порядка - функция, которая принимает компонент как аргумент и возвращает новый компонент
+
+*/
 
