@@ -1,7 +1,6 @@
 import React from 'react';
 import Child from './Child/Child';
-import { withTheme } from '../../../../HOC';
-import { UserContext } from '../../../../contexts/userContext';
+import { withTheme,withUser } from '../../../../HOC';
 import CONSTANTS from '../../../../constants';
 const {THEMES} = CONSTANTS
 
@@ -17,18 +16,9 @@ const Subparent = (props) => { // Тут мы фокусируемся на ре
     </div>)
 }
 
-const SubparentWithThemeAndUser = (props) =>{ // Компонента которая занимается заворачивание в консьюмеры
-    return (
-        <UserContext.Consumer>
-            {({user,logOut})=>{
-                const SubparentThemed = withTheme(Subparent)
-                return(
-                    <SubparentThemed user={user} logOut={logOut}/>
-                )
-            }}
-        </UserContext.Consumer>
-    )
-}
+// const SubparentWithTheme = withTheme(Subparent);
+
+// const SubparentWithThemeAndUser = withUser(SubparentWithTheme)
 
 
-export default SubparentWithThemeAndUser;
+export default withUser(withTheme(Subparent));
