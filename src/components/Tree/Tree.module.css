@@ -1,0 +1,15 @@
+.container{
+    border: 3px solid black;
+    padding: 25px;
+}
+
+.lightTheme{
+    background-color: aliceblue;
+    color: black;
+}
+
+.darkTheme{
+    background-color: rgb(39, 30, 46);
+    border-color: rgb(95, 32, 179);
+    color: aliceblue;
+}
