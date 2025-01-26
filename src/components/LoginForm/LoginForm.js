@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { SIGN_UP_SCHEMA } from '../../schemas';
+import { Formik,Form,Field } from 'formik'
 
 const initialState = {
     firstName: '',
@@ -8,76 +9,31 @@ const initialState = {
     password: ''
 }
 
-class SingUpForm extends Component {
-    constructor(props){
-        super(props)
+function SignUpForm(props){
 
-        this.state = {
-            ...initialState,
-            isError: null
-        }
+    const handleSubmitToFormik = (values, actions) =>{
+        actions.resetForm()
     }
-
-    ChangeInput = ({target: {value,name}})=>{
-        this.setState({
-            [name]: value
-        });
-    }
-
-    submitHandler = (event)=>{
-        event.preventDefault();
-
-        try{
-            const userObject = SIGN_UP_SCHEMA.validateSync(this.state); // Потенциально тут можно делать запит на сервер
-            if(userObject){
-                this.setState({
-                    isError: null
-                })    
-            }
-        } catch(err){
-            this.setState({
-                isError: err
-            })
-        }
-    }
-
-    render() {
-        const {email,password,firstName,lastName,isError} = this.state
+    
         return (
-            <form onSubmit={this.submitHandler}>
-                <input type='text'
-                placeholder='Type your first name' 
-                value={firstName} 
-                onChange={this.ChangeInput} 
-                name='firstName'
-                />
-                <input type='text'
-                placeholder='Type your last name' 
-                value={lastName} 
-                onChange={this.ChangeInput} 
-                name='lastName'
-                />
-                <input type='text'
-                placeholder='Type your email' 
-                value={email} 
-                onChange={this.ChangeInput} 
-                name='email'
-                />
-                <input type='text' 
-                placeholder='Type your password' 
-                value={password} 
-                onChange={this.ChangeInput} 
-                name='password'
-                />
-                <button>Send form</button>
+           <Formik initialValues={initialState} onSubmit={handleSubmitToFormik}>
+            {(formikProps)=>{
+                return (
+                    <Form >
+                        <Field placeholder='Type yuor name'       name='firstName'/>
+                        <Field placeholder='Type yuor last name'  name='lastName'/>
+                        <Field placeholder='Type yuor email'      name='email'/>
+                        <Field placeholder='Type yuor password'   name='password'/>
 
-                {isError && <p style={{color: 'red',fontSize: '25px',backgroundColor: 'black'}} >{isError.message}</p>}
-            </form>
+                        <button type='submit'>button</button>
+                    </Form>
+                )
+            }}
+           </Formik>
         );
-    }
 }
 
-export default SingUpForm;
+export default SignUpForm;
 
 
 

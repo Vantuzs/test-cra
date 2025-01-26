@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import SingUpForm from './LoginForm/LoginForm';
+import SignUpForm from './LoginForm/LoginForm';
 import SignFormDZ from './SignFormDZ/SignFormDZ';
 
 
@@ -18,7 +18,7 @@ class App extends Component {
     render() {
         // console.log(userContext);
         return (
-           <SingUpForm/>
+           <SignUpForm/>
         );
     }
 }
