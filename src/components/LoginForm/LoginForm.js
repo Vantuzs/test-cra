@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as yup from 'yup'
+import { SIGN_UP_SCHEMA } from '../../schemas';
 
 const initialState = {
     firstName: '',
@@ -8,19 +8,13 @@ const initialState = {
     password: ''
 }
 
-const SIGN_UP_SCHEMA = yup.object({
-    firstName: yup.string().required().min(2).max(52),
-    lastName: yup.string().required().min(2).max(52),
-    email: yup.string().required().email(),
-    password: yup.string().required().matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/)
-})
-
 class SingUpForm extends Component {
     constructor(props){
         super(props)
 
         this.state = {
-            ...initialState
+            ...initialState,
+            isError: null
         }
     }
 
@@ -32,11 +26,23 @@ class SingUpForm extends Component {
 
     submitHandler = (event)=>{
         event.preventDefault();
-        console.log(SIGN_UP_SCHEMA.isValidSync(this.state)); // Потенциально тут можно делать запит на сервер
+
+        try{
+            const userObject = SIGN_UP_SCHEMA.validateSync(this.state); // Потенциально тут можно делать запит на сервер
+            if(userObject){
+                this.setState({
+                    isError: null
+                })    
+            }
+        } catch(err){
+            this.setState({
+                isError: err
+            })
+        }
     }
 
     render() {
-        const {email,password,firstName,lastName} = this.state
+        const {email,password,firstName,lastName,isError} = this.state
         return (
             <form onSubmit={this.submitHandler}>
                 <input type='text'
@@ -64,6 +70,8 @@ class SingUpForm extends Component {
                 name='password'
                 />
                 <button>Send form</button>
+
+                {isError && <p style={{color: 'red',fontSize: '25px',backgroundColor: 'black'}} >{isError.message}</p>}
             </form>
         );
     }

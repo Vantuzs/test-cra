@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import SingUpForm from './LoginForm/LoginForm';
+import SignFormDZ from './SignFormDZ/SignFormDZ';
 
 
 class App extends Component {
