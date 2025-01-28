@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import MouseTracker from './MouseTracker/MouseTracker';
+import NewUserList from './UserList2.0/NewUserList';
 
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
     render() {
         // console.log(userContext);
         return (
-           <MouseTracker/>
+           <NewUserList/>
         );
     }
 }
