@@ -1,9 +1,6 @@
 
 import React, { Component } from 'react';
-import SignUpForm from './LoginForm/LoginForm';
-import SignFormDZ from './SignFormDZ/SignFormDZ';
-import NewCounter from './NewCounter/NewCounter';
-import NewCounerFunction from './NewCounter/NewCounerFunction';
+import MouseTracker from './MouseTracker/MouseTracker';
 
 
 class App extends Component {
@@ -20,7 +17,7 @@ class App extends Component {
     render() {
         // console.log(userContext);
         return (
-           <NewCounerFunction/>
+           <MouseTracker/>
         );
     }
 }
