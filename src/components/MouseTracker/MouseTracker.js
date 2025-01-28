@@ -9,9 +9,10 @@ import React, { useState, useEffect } from 'react';
 const MouseTracker = (props) => {
     const [coordinates,setCordinates] = useState({
         x: 0,
-        y: 0,
-        conter: 0
+        y: 0
     });
+
+    const [counter,setCounter] = useState(0)
 
     useEffect(()=>{
         window.addEventListener('mousemove',trakerHandler);
@@ -26,22 +27,14 @@ const MouseTracker = (props) => {
     const trakerHandler = (event) =>{
         const {clientX,clientY} = event
 
-        setCordinates((prevState)=>{
-            return {
-                ...prevState,
-                x: clientX,
-                y: clientY
-            }
+        setCordinates({
+            x: clientX,
+            y: clientY
         })
     }
 
     const clickHanlder = (event)=>{
-        setCordinates((prevState)=>{
-            return {
-                ...prevState,
-                conter: coordinates.conter+1
-            }
-        })
+        setCounter(counter + 1)
     }
 
 
@@ -50,7 +43,7 @@ const MouseTracker = (props) => {
             <p>X: {coordinates.x}</p>   
             <p>Y: {coordinates.y}</p>
             <button onClick={clickHanlder}>Click ME!</button>
-            <p>conter: {coordinates.conter}</p>
+            <p>conter: {counter}</p>
         </>
     );
 }
