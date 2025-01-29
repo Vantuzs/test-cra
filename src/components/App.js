@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import Square from './Square/Square';
+import SquarePractise from './Square/SquarePractise';
 
 
 
@@ -9,7 +10,7 @@ class App extends Component {
 
     render() {
         return (
-            <Square/>
+            <SquarePractise/>
         );
     }
 }
