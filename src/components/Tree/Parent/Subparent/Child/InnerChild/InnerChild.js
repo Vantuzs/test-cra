@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../../../../../contexts/userContext';
 import { withUser } from '../../../../../../HOC';
 
 
 const InnerChild = (props) => {
-       const {user: {firstName,lastName,email,avatar},logOut} = props
+     const {user: {firstName,lastName,email,avatar},logOut} = useContext(UserContext)
        
             return (
             <div >
@@ -18,4 +19,4 @@ const InnerChild = (props) => {
     
 }
 
-export default withUser(InnerChild);
+export default InnerChild;

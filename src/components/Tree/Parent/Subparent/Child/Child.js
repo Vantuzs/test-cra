@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import InnerChild from './InnerChild/InnerChild';
-import { withUser } from '../../../../../HOC';
 import styles from './Child.module.css'
+import { UserContext } from '../../../../../contexts/userContext';
 
+const Child = () => {
+const {user: {firstName,lastName,avatar}} = useContext(UserContext)
 
-const Child = (props) => {
     return(
         <div>
             Child
-            <img src={props.user.avatar} className={styles.img} alt={`${props.user.firstName} ${props.user.lastName}`}/>
+            <img src={avatar} className={styles.img} alt={`${firstName} ${lastName}`}/>
             <InnerChild/>
         </div>
     )
 }
 
-export default withUser(Child);
+export default Child;
