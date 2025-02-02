@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
-import Square from './Square/Square';
-import SquarePractise from './Square/SquarePractise';
+import Counter from './Counter/Counter';
+import Clicker from './RegistrationFrom/RegistrationFrom';
 
 
 
@@ -10,7 +10,7 @@ class App extends Component {
 
     render() {
         return (
-            <SquarePractise/>
+            <Clicker/>
         );
     }
 }
