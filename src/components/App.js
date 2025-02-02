@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react';
 import Counter from './Counter/Counter';
-import Clicker from './RegistrationFrom/RegistrationFrom';
+import Clicker from './RegistrationFrom/Clicker';
+import RegistrationFrom from './RegistrationFrom/RegistrationFrom';
 
 
 
@@ -10,7 +11,7 @@ class App extends Component {
 
     render() {
         return (
-            <Clicker/>
+            <RegistrationFrom/>
         );
     }
 }

@@ -1,110 +1,50 @@
-import React,{useState, useReducer} from 'react';
+import React, {useReducer} from "react";
+import { RegistrationReducer } from "../../reducers/registrationReducer";
+import CONSTANTS from "../../constants";
+const {ACTIONS:{INPUT_CHANGE}}= CONSTANTS
 
-function reducer(state,action){
-    switch(action.type){
-        case 'CLICK_INCREMENT':{
-            return{
-                ...state,
-                count: state.count+1
-            }
-        } case 'CLICK_DECREMENT':{
-            return{
-                ...state,
-                count: state.count-1
-            }
-        }
-        default:{
-            return state;
-        }
-    }
-}
 
 const initialState = {
-    count: 0,
-    // тут еще может быть много других полей
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
 }
 
-const Clicker = () => {
-    const [state,dispatch] = useReducer(reducer,initialState)
 
-    const clickHandler = ()=>{
-        dispatch({
-            type: 'CLICK_INCREMENT'
-        }); // В диспатч вы передаете обьекс action
-    }
+const RegistrationFrom = (props) => {
+    const [state,dispatch] = useReducer(RegistrationReducer,initialState)
 
-    const decrimentHandler = ()=>{
+    const {firstName,lastName,email,password} = state
+
+    const universalChangeHandler = ({target: {value,name}})=>{
         dispatch({
-            type: 'CLICK_DECREMENT'
+            type: INPUT_CHANGE,
+            payload: {
+                value,
+                name
+            } 
         })
     }
-    
+
+    const submitHandler = (event)=>{
+        event.preventDefault();
+        console.log(state); // ПОТЕНЦИАЛЬНО, тут мог быть запрос на сервер
+
+    }
+
     return (
-        <>
-            <h1>{state.count}</h1>
-            <button onClick={clickHandler}>+1</button>
-            <button onClick={decrimentHandler}>-1</button>
-        </>
+        <form onSubmit={submitHandler}> 
+                <input type='text' placeholder='Enter your first NAME' name='firstName' value={firstName} onChange={universalChangeHandler}/>
+                <input type='text' placeholder='Enter your last NAME' name='lastName' value={lastName} onChange={universalChangeHandler}/>
+                <input type='email' placeholder='Enter your email' name='email' value={email} onChange={universalChangeHandler}/>
+                <input type='password' placeholder='Enter your password' name='password' value={password} onChange={universalChangeHandler}/>
+                <button>Send form Todurompf</button>
+        </form>
     );
 }
 
-
-/* 
-Задача
-
-Добавить декримент личильника к функционалу
-
-+ 1. ПРопишите case в reducer
-+ 2. Сделайте оброботчик собьтий нажатия(onClick)кнопки декременту
-+ 3. Создайте в верстке кнопку и прикрепите к ней оброботчкий событий, который вы сделали в предыдещем пункте
-
-*/
-
-export default Clicker;
-
-
-// const RegistrationFrom = (props) => {
-//     const [firstName,setFirstName] = useState('')
-//     const [lastName,setLastName] = useState('')
-//     const [email,setEmail] = useState('')
-//     const [password,setPassword] = useState('')
-
-
-//   const universalChangeHandker = ({target: {value,name}}) =>{
-//     switch(name){
-//         case 'firstName': {
-//             setFirstName(value)
-//             break;
-//         } case 'lastName':{
-//             setLastName(value)
-//             break;
-//         } case 'email':{
-//             setEmail(value)
-//             break;
-//         } case 'password': {
-//             setPassword(value)
-//             break;
-//         }
-//         default:{
-//             break;
-//         }
-//     }
-
-//   }
-    
-
-//     return (
-//         <form> 
-//                 <input type='text' placeholder='Enter your first NAME' name='firstName' value={firstName} onChange={universalChangeHandker}/>
-//                 <input type='text' placeholder='Enter your last NAME' name='lastName' value={lastName} onChange={universalChangeHandker}/>
-//                 <input type='email' placeholder='Enter your email' name='email' value={email} onChange={universalChangeHandker}/>
-//                 <input type='password' placeholder='Enter your password' name='password' value={password} onChange={universalChangeHandker}/>
-//                 <button>Send form Todurompf</button>
-//         </form>
-//     );
-// }
-
-// export default RegistrationFrom;
+export default RegistrationFrom;
 
 
 
